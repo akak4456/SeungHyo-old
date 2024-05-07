@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>승효</title>
+    <style>
+        #logo {
+            width: 200px;
+            height: auto;
+            margin-left: 32px;
+            margin-right: 32px;
+            margin-top: 16px;
+        }
+        header {
+            display: flex;
+        }
+        #top-bar {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            margin-top: auto;
+            padding-bottom: 14px;
+        }
+        nav ul {
+            margin: 0;
+            font-size: 0;
+        }
+        nav li {
+            margin: 0;
+            list-style-type: none;
+            display: inline-block;
+            color: rgb(104,114,120);
+            font-size: 16px;
+        }
+        nav li div {
+            display: inline-block;
+        }
+        nav li a {
+            text-decoration: none;
+            padding-top: 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-bottom: 16px;
+        }
+        nav li a:hover ~ div {
+            visibility: visible;
+        }
+        #search {
+            width: 24px;
+            height: 24px;
+        }
+        #login {
+            display: inline-block;
+            margin-left: auto;
+        }
+        #login ul {
+            margin: 0;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        #login li{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+        }
+        #login li a{
+            padding-left: 8px;
+            padding-right: 8px;
+            text-decoration: none;
+            color: rgb(104,114,120);
+            display: inline-block;
+            font-size: 10px;
+        }
+        #login>ul>li::after {
+            content: "|";
+            float: right;
+            display: flex;
+            font-size: 8px;
+            color: rgb(104,114,120);
+            align-items: center;
+        }
+        #login>ul>li:last-child::after {
+            content: "";
+        }
+        hr {
+            margin: 0;
+        }
+        .bottom-border {
+            height: 2px;
+            width: 100%;
+            display: block;
+            background-color: blue;
+            position:relative;
+            top: 14px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img id="logo" src="./img/logo.png" />
+        <div id="top-bar">
+            <div id="login">
+                <ul>
+                    <li><a href="#">akak4456</a></li>
+                    <li><a href="#">설정</a></li>
+                    <li><a href="#">로그아웃</a></li>
+                </ul>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <div>
+                            <a href="#">문제</a>
+                            <div class="bottom-border"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">채점 현황</a>
+                            <div class="bottom-border"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">랭킹</a>
+                            <div class="bottom-border"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#">오답노트</a>
+                            <div class="bottom-border"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#"><img id="search" src="./img/search.png" /></a>
+                            <div class="bottom-border"></div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <hr>
+    <main>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
