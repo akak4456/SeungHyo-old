@@ -9,15 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>승효</title>
     <style>
+        body {
+            margin: 0;
+        }
+        header{
+            position :fixed;
+            width: 100%;
+            overflow: visible;
+        }
         #logo {
             width: 200px;
             height: auto;
-            margin-left: 32px;
-            margin-right: 32px;
-            margin-top: 16px;
+            vertical-align: auto;
+            padding-top: 16px;
+            padding-bottom: 16px;
         }
-        header {
+        #headerInside {
             display: flex;
+            width: 50%;
+            margin: auto;
         }
         #top-bar {
             margin-left: auto;
@@ -26,7 +36,6 @@
         }
         nav {
             margin-top: auto;
-            padding-bottom: 14px;
         }
         nav ul {
             margin: 0;
@@ -36,29 +45,37 @@
             margin: 0;
             list-style-type: none;
             display: inline-block;
-            color: rgb(104,114,120);
-            font-size: 16px;
         }
         nav li div {
             display: inline-block;
         }
         nav li a {
+            display: block;
             text-decoration: none;
             padding-top: 16px;
             padding-left: 16px;
             padding-right: 16px;
             padding-bottom: 16px;
+            color: #687074;
+            font-size: 14px;
+        }
+        nav li a:hover {
+            color: #2980b9;
         }
         nav li a:hover ~ div {
             visibility: visible;
         }
+        nav li a:hover ~ #problem {
+            visibility: visible;
+        }
         #search {
-            width: 24px;
-            height: 24px;
+            width: 16px;
+            height: 16px;
         }
         #login {
             display: inline-block;
             margin-left: auto;
+            margin-top: 16px;
         }
         #login ul {
             margin: 0;
@@ -71,20 +88,20 @@
             list-style-type: none;
             display: flex;
         }
-        #login li a{
+        #login li a {
             padding-left: 8px;
             padding-right: 8px;
             text-decoration: none;
-            color: rgb(104,114,120);
+            color: #7c8082;
             display: inline-block;
-            font-size: 10px;
+            font-size: 11px;
         }
         #login>ul>li::after {
             content: "|";
             float: right;
             display: flex;
             font-size: 8px;
-            color: rgb(104,114,120);
+            color: #7c8082;
             align-items: center;
         }
         #login>ul>li:last-child::after {
@@ -95,63 +112,176 @@
         }
         .bottom-border {
             height: 2px;
-            width: 100%;
             display: block;
-            background-color: blue;
+            background-color: rgb(0, 118, 192);
             position:relative;
-            top: 14px;
             visibility: hidden;
+        }
+        #problem {
+            position: absolute;
+            width: 50vw;
+            left: 25vw;
+            display: block;
+            visibility: hidden;
+        }
+        #problemBorderTop {
+            height: 2px;
+            width: 100%;
+            background-color: rgb(0, 118, 192);
+        }
+        .problem-set {
+            flex: 1 1 0;
+            border-left: 1px solid #7c8082;
+            display: block;
+            padding: 16px;
+        }
+        .problem-set:last-child {
+            border-right: 1px solid #7c8082;
+        }
+        #problemBorderBottom {
+            height: 2px;
+            width: 100%;
+            background-color: rgb(104, 112,126);
+        }
+        #problemContent{
+            width: 100%;
+            display: flex;
+        }
+        .problem-set h3 {
+            margin: 0;
+            font-size: 15px;
+            color: #7c8082;
+            font-weight: 400;
+        }
+        .problem-set ul {
+            padding: 0;
+            padding-top: 16px;
+        }
+        .problem-set ul li{
+            list-style-type: none;
+            display: block;
+        }
+        .problem-set ul li a {
+            padding: 0;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: 13px;
+        }
+        .problem-set ul li a::before {
+            content: "> ";
         }
     </style>
 </head>
 <body>
     <header>
-        <img id="logo" src="./img/logo.png" />
-        <div id="top-bar">
-            <div id="login">
-                <ul>
-                    <li><a href="#">akak4456</a></li>
-                    <li><a href="#">설정</a></li>
-                    <li><a href="#">로그아웃</a></li>
-                </ul>
+        <div id="headerInside">
+            <img id="logo" src="./img/logo.png" />
+            <div id="top-bar">
+                <div id="login">
+                    <ul>
+                        <li><a href="#">akak4456</a></li>
+                        <li><a href="#">설정</a></li>
+                        <li><a href="#">로그아웃</a></li>
+                    </ul>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <div>
+                                <a href="#">문제</a>
+                                <div id="problem">
+                                    <div id="problemBorderTop"></div>
+                                    <div id="problemContent">
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">전체 문제</a></li>
+                                                <li><a href="#">문제 출처</a></li>
+                                                <li><a href="#">단계별로 풀어보기</a></li>
+                                                <li><a href="#">알고리즘 분류</a></li>
+                                                <li><a href="#">추가된 문제</a></li>
+                                                <li><a href="#">문제 순위</a></li>
+                                                <li><a href="#">북마크</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">내가 실패한 문제</a></li>
+                                                <li><a href="#">내가 못 푼 문제</a></li>
+                                                <li><a href="#">나만 푼 문제</a></li>
+                                                <li><a href="#">푼 사람이 한 명인 문제</a></li>
+                                                <li><a href="#">아무도 못 푼 문제</a></li>
+                                                <li><a href="#">최근 제출된 문제</a></li>
+                                                <li><a href="#">최근 풀린 문제</a></li>
+                                                <li><a href="#">안 푼 문제 랜덤</a></li>
+                                                <li><a href="#">전체 문제 랜덤</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">ICPC</a></li>
+                                                <li><a href="#">Olympiad</a></li>
+                                                <li><a href="#">한국정보올림피아드</a></li>
+                                                <li><a href="#">한국정보올림피아드시도지역본선</a></li>
+                                                <li><a href="#">전국 대학생 프로그래밍 대회 동아리 연합</a></li>
+                                                <li><a href="#">대학교 대회</a></li>
+                                                <li><a href="#">카카오 코드 페스티벌</a></li>
+                                                <li><a href="#">Coder's High</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">Regionals</a></li>
+                                                <li><a href="#">World Finals</a></li>
+                                                <li><a href="#">Korea Regional</a></li>
+                                                <li><a href="#">Africa and the Middle East Regionals</a></li>
+                                                <li><a href="#">Europe Regionals</a></li>
+                                                <li><a href="#">Latin America Regionals</a></li>
+                                                <li><a href="#">North America Regionals</a></li>
+                                                <li><a href="#">South Pacific Regionals</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="problemBorderBottom"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#">채점 현황</a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#">랭킹</a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#">게시판</a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#"><img id="search" src="./img/search.png" /></a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li>
-                        <div>
-                            <a href="#">문제</a>
-                            <div class="bottom-border"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="#">채점 현황</a>
-                            <div class="bottom-border"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="#">랭킹</a>
-                            <div class="bottom-border"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="#">오답노트</a>
-                            <div class="bottom-border"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="#"><img id="search" src="./img/search.png" /></a>
-                            <div class="bottom-border"></div>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+        </div>
+        <hr>
+        <div>
+
         </div>
     </header>
-    <hr>
     <main>
 
     </main>
