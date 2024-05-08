@@ -13,9 +13,7 @@
             margin: 0;
         }
         header{
-            position :fixed;
             width: 100%;
-            overflow: visible;
         }
         #logo {
             width: 200px;
@@ -123,6 +121,7 @@
             left: 25vw;
             display: block;
             visibility: hidden;
+            background-color: white;
         }
         #problemBorderTop {
             height: 2px;
@@ -169,6 +168,58 @@
         }
         .problem-set ul li a::before {
             content: "> ";
+        }
+        main {
+            text-align: center;
+        }
+        #mainAd {
+            width: 50%;
+            height: 500px;
+        }
+        #info {
+            margin-top: 48px;
+            text-align: center;
+        }
+        #info h2{
+            font-size: 24px;
+            color: #333;
+            font-weight: 400;
+        }
+        #infoDivider{
+            width: 100px;
+            height: 2px;
+            background-color: #333;
+            margin: auto;
+        }
+        #info p{
+            color: #555;
+            font-size: 13px;
+        }
+        #statistics {
+            background-color: black;
+            display: flex;
+            padding: 24px;
+            padding-left: 20%;
+            padding-right: 20%;
+            margin-top: 96px;
+        }
+        #statistics div{
+            border: 1px solid #555;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            flex: 1 1 0;
+            margin: 8px;
+        }
+        #statistics h2 {
+            font-size: 42px;
+            color: white;
+            margin: 0;
+        }
+        #statistics p {
+            font-size: 16px;
+            color: #bbb;
+            margin: 0;
+            margin-top: 8px;
         }
     </style>
 </head>
@@ -283,7 +334,32 @@
         </div>
     </header>
     <main>
-
+        <article>
+            <img id="mainAd" src="./img/adsample.jpg" >
+        </article>
+        <article id="info">
+            <h2>SeungHyo Online Judge</h2>
+            <div id="infoDivider"></div>
+            <p>프로그래밍 문제를 풀고 온라인으로 채점받을 수 있는 곳입니다.</p>
+        </article>
+        <article id="statistics">
+            <div>
+                <h2>30831</h2>
+                <p>전체 문제</p>
+            </div>
+            <div>
+                <h2>29726</h2>
+                <p>채점 가능한 문제</p>
+            </div>
+            <div>
+                <h2>26352</h2>
+                <p>풀린 문제</p>
+            </div>
+            <div>
+                <h2>70</h2>
+                <p>채점 가능 언어</p>
+            </div>
+        </article>
     </main>
     <footer>
 
