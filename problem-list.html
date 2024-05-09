@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>승효</title>
+    <!-- icon 때문에 bootstrap 을 사용함 html, css 를 배우기 위해 icon 외의 bootstrap 기능은 사용하지 말 것-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        main article{
+            width: 50%;
+        }
+        #problem-list-tab {
+            display: flex;
+            margin-top: 48px;
+        }
+        #problem-list-tab-buttons {
+            display: inline-block;
+        }
+        #problem-list-tab-buttons span {
+            margin-top: auto;
+            margin-bottom: auto;
+            line-height: 34px;
+            height: 34px;
+        }
+        #problem-list-tab-buttons span:not(:first-child) {
+            margin-left: 16px;
+        }
+        .btn-primary {
+            display: inline-block;
+            color: white;
+            background-color: #428bca;
+            height: 34px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .btn-blank {
+            display: inline-block;
+            color: #555;
+            height: 34px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .glyphicon-search {
+            color:white;
+            margin: auto;
+        }
+        #search-area {
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            background-color: #428bca;
+            text-align: center;
+        }
+        #problem-list-tab-search{
+            display: flex;
+            margin-left: auto;
+        }
+        #problem-list-tab-search>input {
+            display: inline-block;
+            width: 200px;
+            height: 34px;
+            border: 1px solid #ccc;
+        }
+        #problem-list-content th, td {
+            border: 1px solid #ddd;
+            font-size: 13px;
+            padding: 8px;
+        }
+        #problem-list-content tr:nth-of-type(2n) {
+            background-color: #f9f9f9;
+        }
+        .tag-black {
+            font-size: 11px;
+            color: white;
+            font-weight: 400;
+            padding: 4px 7px;
+            background-color: #777;
+        }
+        #problem-list-pagination {
+            display: flex;
+            margin-top: 24px;
+            margin-bottom: 48px;
+        }
+        #problem-list-pagination a{
+            margin: auto;
+        }
+        #problem-list-pagination a:first-child {
+            margin-right: 0px;
+        }
+        #problem-list-pagination a:last-child{
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="headerInside">
+            <img id="logo" src="./img/logo.png" />
+            <div id="top-bar">
+                <div id="login">
+                    <ul>
+                        <li><a href="#">akak4456</a></li>
+                        <li><a href="#">설정</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">로그아웃</a></li>
+                    </ul>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <div>
+                                <a href="#">문제</a>
+                                <div id="problem">
+                                    <div id="problemBorderTop"></div>
+                                    <div id="problemContent">
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">전체 문제</a></li>
+                                                <li><a href="#">문제 출처</a></li>
+                                                <li><a href="#">단계별로 풀어보기</a></li>
+                                                <li><a href="#">알고리즘 분류</a></li>
+                                                <li><a href="#">추가된 문제</a></li>
+                                                <li><a href="#">문제 순위</a></li>
+                                                <li><a href="#">북마크</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">내가 실패한 문제</a></li>
+                                                <li><a href="#">내가 못 푼 문제</a></li>
+                                                <li><a href="#">나만 푼 문제</a></li>
+                                                <li><a href="#">푼 사람이 한 명인 문제</a></li>
+                                                <li><a href="#">아무도 못 푼 문제</a></li>
+                                                <li><a href="#">최근 제출된 문제</a></li>
+                                                <li><a href="#">최근 풀린 문제</a></li>
+                                                <li><a href="#">안 푼 문제 랜덤</a></li>
+                                                <li><a href="#">전체 문제 랜덤</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">ICPC</a></li>
+                                                <li><a href="#">Olympiad</a></li>
+                                                <li><a href="#">한국정보올림피아드</a></li>
+                                                <li><a href="#">한국정보올림피아드시도지역본선</a></li>
+                                                <li><a href="#">전국 대학생 프로그래밍 대회 동아리 연합</a></li>
+                                                <li><a href="#">대학교 대회</a></li>
+                                                <li><a href="#">카카오 코드 페스티벌</a></li>
+                                                <li><a href="#">Coder's High</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="problem-set">
+                                            <h3>문제</h3>
+                                            <ul>
+                                                <li><a href="#">Regionals</a></li>
+                                                <li><a href="#">World Finals</a></li>
+                                                <li><a href="#">Korea Regional</a></li>
+                                                <li><a href="#">Africa and the Middle East Regionals</a></li>
+                                                <li><a href="#">Europe Regionals</a></li>
+                                                <li><a href="#">Latin America Regionals</a></li>
+                                                <li><a href="#">North America Regionals</a></li>
+                                                <li><a href="#">South Pacific Regionals</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="problemBorderBottom"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#">채점 현황</a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#">랭킹</a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#">게시판</a>
+                                <div class="bottom-border"></div>
+                            </div>
+                            <div>
+                                <a href="#">통계</a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#"><img id="search" src="./img/search.png" /></a>
+                                <div class="bottom-border"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <hr>
+        <div>
+
+        </div>
+    </header>
+    <main>
+        <article id="problem-list-tab">
+            <div id="problem-list-tab-buttons">
+                <span class="btn-primary">전체</span>
+                <span class="btn-blank">출처</span>
+                <span class="btn-blank">단계</span>
+                <span class="btn-blank">분류</span>
+            </div>
+            <div id="problem-list-tab-search">
+                <input type="text">
+                <div id="search-area">
+                    <span class="glyphicon glyphicon glyphicon-search"></span>
+                </div>
+            </div>
+        </article>
+        <article id="problem-list-content">
+            <table style="width:100%; margin-top: 24px;">
+                <tr>
+                    <th style="width:10%">문제</th>
+                    <th style="width:40%">문제 제목</th>
+                    <th style="width:20%">정보</th>
+                    <th style="width:10%">맞힌 사람</th>
+                    <th style="width:10%">제출</th>
+                    <th style="width:10%">정답 비율</th>
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td><a href="#">A+B</a></td>
+                    <td><span class="tag-black">다국어</span></td>
+                    <td><a href="#">295884</td>
+                    <td><a href="#">1090260</td> 
+                    <td>39.058%</td>  
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="#">A-B</a></td>
+                    <td></td>
+                    <td><a href="#">255348</td>
+                    <td><a href="#">441831</td> 
+                    <td>69.517%</td>  
+                </tr>
+            </table>
+        </article>
+        <article id="problem-list-pagination">
+            <a href="#">이전 페이지</a>
+            <a href="#">다음 페이지</a>
+        </article>
+    </main>
+    <footer>
+        <span>© 2024 All Rights Reserved.</span>
+        &nbsp;
+        <span>주식회사 승효</span>
+        <img src="./img/logo.png">
+    </footer>
+</body>
+</html>

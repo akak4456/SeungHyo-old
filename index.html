@@ -8,167 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>승효</title>
+    <!-- icon 때문에 bootstrap 을 사용함 html, css 를 배우기 위해 icon 외의 bootstrap 기능은 사용하지 말 것-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
     <style>
-        body {
-            margin: 0;
-        }
-        header{
-            width: 100%;
-        }
-        #logo {
-            width: 200px;
-            height: auto;
-            vertical-align: auto;
-            padding-top: 16px;
-            padding-bottom: 16px;
-        }
-        #headerInside {
-            display: flex;
-            width: 50%;
-            margin: auto;
-        }
-        #top-bar {
-            margin-left: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        nav {
-            margin-top: auto;
-        }
-        nav ul {
-            margin: 0;
-            font-size: 0;
-        }
-        nav li {
-            margin: 0;
-            list-style-type: none;
-            display: inline-block;
-        }
-        nav li div {
-            display: inline-block;
-        }
-        nav li a {
-            display: block;
-            text-decoration: none;
-            padding-top: 16px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-bottom: 16px;
-            color: #687074;
-            font-size: 14px;
-        }
-        nav li a:hover {
-            color: #2980b9;
-        }
-        nav li a:hover ~ div {
-            visibility: visible;
-        }
-        nav li a:hover ~ #problem {
-            visibility: visible;
-        }
-        #search {
-            width: 16px;
-            height: 16px;
-        }
-        #login {
-            display: inline-block;
-            margin-left: auto;
-            margin-top: 16px;
-        }
-        #login ul {
-            margin: 0;
-            display: flex;
-            flex-flow: row nowrap;
-        }
-        #login li{
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-            display: flex;
-        }
-        #login li a {
-            padding-left: 8px;
-            padding-right: 8px;
-            text-decoration: none;
-            color: #7c8082;
-            display: inline-block;
-            font-size: 11px;
-        }
-        #login>ul>li::after {
-            content: "|";
-            float: right;
-            display: flex;
-            font-size: 8px;
-            color: #7c8082;
-            align-items: center;
-        }
-        #login>ul>li:last-child::after {
-            content: "";
-        }
-        hr {
-            margin: 0;
-        }
-        .bottom-border {
-            height: 2px;
-            display: block;
-            background-color: rgb(0, 118, 192);
-            position:relative;
-            visibility: hidden;
-        }
-        #problem {
-            position: absolute;
-            width: 50vw;
-            left: 25vw;
-            display: block;
-            visibility: hidden;
-            background-color: white;
-        }
-        #problemBorderTop {
-            height: 2px;
-            width: 100%;
-            background-color: rgb(0, 118, 192);
-        }
-        .problem-set {
-            flex: 1 1 0;
-            border-left: 1px solid #7c8082;
-            display: block;
-            padding: 16px;
-        }
-        .problem-set:last-child {
-            border-right: 1px solid #7c8082;
-        }
-        #problemBorderBottom {
-            height: 2px;
-            width: 100%;
-            background-color: rgb(104, 112,126);
-        }
-        #problemContent{
-            width: 100%;
-            display: flex;
-        }
-        .problem-set h3 {
-            margin: 0;
-            font-size: 15px;
-            color: #7c8082;
-            font-weight: 400;
-        }
-        .problem-set ul {
-            padding: 0;
-            padding-top: 16px;
-        }
-        .problem-set ul li{
-            list-style-type: none;
-            display: block;
-        }
-        .problem-set ul li a {
-            padding: 0;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            font-size: 13px;
-        }
-        .problem-set ul li a::before {
-            content: "> ";
-        }
         main {
             text-align: center;
         }
@@ -221,6 +65,62 @@
             margin: 0;
             margin-top: 8px;
         }
+        #boardSummary {
+            padding-left: 15%;
+            padding-right: 15%;
+            margin-top: 48px;
+            display: flex;
+        }
+
+        #boardSummary .bottom-border {
+            visibility: visible;
+        }
+        .boardSummaryTitleLink, .boardSummaryTitleLink:hover {
+            text-decoration: none;
+            font-size: 22px;
+            color: #333;
+        }
+        .boardSummarySection {
+            flex: 1 1 0;
+            text-align: left;
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+        .boardSummaryTitle {
+            display: inline-block;
+        }
+        .boardSummaryContent {
+            background-color: #f7f7f7;
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .boardSummaryContentFirst {
+            margin-top: 24px;
+        }
+        .boardSummaryContentTo {
+            color: #0076C0;
+            font-size: 13px;
+        }
+        .boardSummaryContentSubject {
+            color: #333;
+            font-size: 13px;
+        }
+        .boardSummaryContentSmallText {
+            color: #777;
+            font-size: 11px;
+        }
+        .boardSummaryContentIcon {
+            font-size: 11px;
+        }
+        #infoP {
+            margin-top: 48px;
+        }
+        .boardSummaryContent p {
+            color: #333;
+            font-size: 13px;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -232,6 +132,8 @@
                     <ul>
                         <li><a href="#">akak4456</a></li>
                         <li><a href="#">설정</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">로그인</a></li>
                         <li><a href="#">로그아웃</a></li>
                     </ul>
                 </div>
@@ -317,6 +219,10 @@
                                 <a href="#">게시판</a>
                                 <div class="bottom-border"></div>
                             </div>
+                            <div>
+                                <a href="#">통계</a>
+                                <div class="bottom-border"></div>
+                            </div>
                         </li>
                         <li>
                             <div>
@@ -340,7 +246,7 @@
         <article id="info">
             <h2>SeungHyo Online Judge</h2>
             <div id="infoDivider"></div>
-            <p>프로그래밍 문제를 풀고 온라인으로 채점받을 수 있는 곳입니다.</p>
+            <p id="infoP">프로그래밍 문제를 풀고 온라인으로 채점받을 수 있는 곳입니다.</p>
         </article>
         <article id="statistics">
             <div>
@@ -360,9 +266,171 @@
                 <p>채점 가능 언어</p>
             </div>
         </article>
+        <article id="boardSummary">
+            <div class="boardSummarySection">
+                <div class="boardSummaryTitle">
+                    <a href="#" class="boardSummaryTitleLink">새로운 글</a>
+                    <div class="bottom-border"></div>
+                </div>
+                <hr>
+                <div class="boardSummaryContent boardSummaryContentFirst">
+                    <div class="boardSummaryContentTop">
+                        <a href="#" class="boardSummaryContentTo">@totOro</a>
+                        <a href="#" class="boardSummaryContentSubject">큐 없이 구현</a>
+                    </div>
+                    <div class="boardSummaryContentBottom">
+                        <span class="boardSummaryContentSmallText">47분 전</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-thumbs-up"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-comment"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                    </div>
+                </div>
+                <div class="boardSummaryContent">
+                    <div class="boardSummaryContentTop">
+                        <a href="#" class="boardSummaryContentTo">@skyload96</a>
+                        <a href="#" class="boardSummaryContentSubject">반례가 있을까요?</a>
+                    </div>
+                    <div class="boardSummaryContentBottom">
+                        <span class="boardSummaryContentSmallText">4시간 전</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-thumbs-up"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-comment"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                    </div>
+                </div>
+                <div class="boardSummaryContent">
+                    <div class="boardSummaryContentTop">
+                        <a href="#" class="boardSummaryContentTo">@soyoon22</a>
+                        <a href="#" class="boardSummaryContentSubject">지금까지 해왔던 MST로 해서 시간초과가 나는 건가요?</a>
+                    </div>
+                    <div class="boardSummaryContentBottom">
+                        <span class="boardSummaryContentSmallText">5시간 전</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-thumbs-up"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-comment"></span>
+                        <span class="boardSummaryContentSmallText">1</span>
+                    </div>
+                </div>
+                <div class="boardSummaryContent">
+                    <div class="boardSummaryContentTop">
+                        <a href="#" class="boardSummaryContentTo">@sjh04196</a>
+                        <a href="#" class="boardSummaryContentSubject">c++ 런타임에러</a>
+                    </div>
+                    <div class="boardSummaryContentBottom">
+                        <span class="boardSummaryContentSmallText">6시간 전</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-thumbs-up"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-comment"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                    </div>
+                </div>
+                <div class="boardSummaryContent">
+                    <div class="boardSummaryContentTop">
+                        <a href="#" class="boardSummaryContentTo">@oldworld</a>
+                        <a href="#" class="boardSummaryContentSubject">이 문제를 접근하는 방식은?</a>
+                    </div>
+                    <div class="boardSummaryContentBottom">
+                        <span class="boardSummaryContentSmallText">6시간 전</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-thumbs-up"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                        <span class="boardSummaryContentIcon glyphicon glyphicon-comment"></span>
+                        <span class="boardSummaryContentSmallText">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="boardSummarySection">
+                <div class="boardSummaryTitle">
+                    <a href="#" class="boardSummaryTitleLink">추가된 한국어 문제</a>
+                    <div class="bottom-border"></div>
+                </div>
+                <hr>
+                <div class="boardSummaryContent boardSummaryContentFirst">
+                    <p>31806번 구조대</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31804번 Chance!</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31801번 증가와 감소</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31803번 교실 배정</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31800번 Best Chance</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31807번 주기 함수 (Hard)</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31802번 주기 함수 (Easy)</p>
+                </div>
+            </div>
+            <div class="boardSummarySection">
+                <div class="boardSummaryTitle">
+                    <a href="#" class="boardSummaryTitleLink">추가된 영어 문제</a>
+                    <div class="bottom-border"></div>
+                </div>
+                <hr>
+                <div class="boardSummaryContent boardSummaryContentFirst">
+                    <p>31774번 Farmer John's Favorite Permutation</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31773번 Walking Along a Fence</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31772번 Logical Moos</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31771번 The 'Winning' Gene</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31770번 Painting Fence Posts</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31769번 Bessie's Interview</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>31768번 Samller Averages</p>
+                </div>
+            </div>
+            <div class="boardSummarySection">
+                <div class="boardSummaryTitle">
+                    <a href="#" class="boardSummaryTitleLink">문제 순위</a>
+                    <div class="bottom-border"></div>
+                </div>
+                <hr>
+                <div class="boardSummaryContent boardSummaryContentFirst">
+                    <p>1000번 A+B</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>2557번 Hello World</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>1008번 A/B</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>10869번 사칙연산</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>11382번 꼬마 정민</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>1001번 A-B</p>
+                </div>
+                <div class="boardSummaryContent">
+                    <p>10926번 ??!</p>
+                </div>
+            </div>
+        </article>
+        <br><br><br><br>
     </main>
     <footer>
-
+        <span>© 2024 All Rights Reserved.</span>
+        &nbsp;
+        <span>주식회사 승효</span>
+        <img src="./img/logo.png">
     </footer>
 </body>
 </html>
